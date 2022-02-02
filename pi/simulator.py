@@ -51,7 +51,7 @@ def run(id, current_coords, from_coords, to_coords, SERVER_URL):
 if __name__ == "__main__":
     # Fill in the IP address of server, in order to location of the drone to the SERVER
     #===================================================================
-    SERVER_URL = "http://10.0.0.23:5001/drone"                                                 #ändrade denna från "http://SERVER_IP:PORT/drone" till vår server IP och porten som database ska köras på enligt READE-instruktionerna
+    SERVER_URL = "http://100.100.100.24:5001/drone"                                                 #ändrade denna från "http://SERVER_IP:PORT/drone" till vår server IP och porten som database ska köras på enligt READE-instruktionerna
     #===================================================================
 
     parser = argparse.ArgumentParser()
@@ -70,5 +70,8 @@ if __name__ == "__main__":
 
     print(current_coords, from_coords, to_coords)
     drone_long, drone_lat = run(args.id ,current_coords, from_coords, to_coords, SERVER_URL)
+    dronedest = open("dronedestination.txt", "w+")    #.txt?
+    dronedest.writelines([drone_long, drone_lat])   #hur sparas värdena?
+    dronedest.close()
     # drone_long and drone_lat is the final location when drlivery is completed, find a way save the value, and use it for the initial coordinates of next delivery
     #=============================================================================
