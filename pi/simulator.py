@@ -38,20 +38,20 @@ def run(id, current_coords, from_coords, to_coords, SERVER_URL):
                           'latitude': drone_coords[1],
                           'status': 'busy'
                         }
-            resp = session.post(SERVER_URL, json=drone_info)
+            resp = session.post(SERVER_URL, json=drone_info)             
     with requests.Session() as session:
             drone_info = {'id': id,
                           'longitude': drone_coords[0],
                           'latitude': drone_coords[1],
                           'status': 'idle'
                          }
-            resp = session.post(SERVER_URL, json=drone_info)
+            resp = session.post(SERVER_URL, json=drone_info)         
     return drone_coords[0], drone_coords[1]
    
 if __name__ == "__main__":
     # Fill in the IP address of server, in order to location of the drone to the SERVER
     #===================================================================
-    SERVER_URL = "http://SERVER_IP:PORT/drone"
+    SERVER_URL = "http://10.0.0.23:5001/drone"                                                 #ändrade denna från "http://SERVER_IP:PORT/drone" till vår server IP och porten som database ska köras på enligt READE-instruktionerna
     #===================================================================
 
     parser = argparse.ArgumentParser()

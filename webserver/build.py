@@ -16,7 +16,7 @@ app.secret_key = 'dljsaklqk24e21cjn!Ew@@dsa5'
 
 # change this so that you can connect to your redis server
 # ===============================================
-redis_server = redis.Redis("REDIS_SERVER", decode_responses=True, charset="unicode_escape")
+redis_server = redis.Redis(host='localhost', port=6379, decode_responses=True, charset="unicode_escape")    # Gissar på detta, vi kör ju det här skriptet på localhost (server pi). Stod från början: redis.Redis("REDIS_SERVER", decode_responses=True, charset="unicode_escape")
 # ===============================================
 
 # Translate OSM coordinate (longitude, latitude) to SVG coordinates (x,y).
@@ -53,7 +53,9 @@ def get_drones():
     #              }
     # use function translate() to covert the coodirnates to svg coordinates
     #=============================================================================================================================================
-    drone_dict = {}
+    drone_dict = {'DRONE_1':{'longitude': translate(drone1_logitude_svg), 'latitude': translate(drone1_logitude_svg), 'status': drone1_status},                     #Stod bara såhär {} förut.
+                  'DRONE_2': {'longitude': translate(drone2_logitude_svg), 'latitude': translate(drone2_logitude_svg), 'status': drone2_status}                       #fyll i rätt grejer, hämta från redis när ni skrivit klart route planner
+                  }                                                                                                                      
     return jsonify(drone_dict)
 
 if __name__ == "__main__":

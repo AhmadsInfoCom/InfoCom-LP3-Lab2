@@ -15,7 +15,7 @@ app.secret_key = 'dljsaklqk24e21cjn!Ew@@dsa5'
 
 # change this to connect to your redis server
 # ===============================================
-redis_server = redis.Redis("REDIS_SERVER", decode_responses=True, charset="unicode_escape")
+redis_server = redis.Redis(host='localhost', port=6379, decode_responses=True, charset="unicode_escape")       # Gissar på detta, vi kör ju det här skriptet på localhost (server pi). Stod från början: redis.Redis("REDIS_SERVER", decode_responses=True, charset="unicode_escape")
 # ===============================================
 
 geolocator = Nominatim(user_agent="my_request")
@@ -47,12 +47,17 @@ def route_planner():
         # ======================================================================
         # Here you need to find a drone that is availale from the database. You need to check the status of the drone, there are two status, 'busy' or 'idle', only 'idle' drone is available and can be sent the coords to run delivery
         # 1. Find avialable drone in the database
+        
+                 #gör en kodsats som kollar redis_server.get('droneID') eller , och kollar status för den, och fixa nedan enligt resultatet:
+        
         # if no drone is availble:
+                                                          
         message = 'No available drone, try later'
         # else:
             # 2. Get the IP of available drone, 
-        DRONE_URL = 'http://' + DRONE_IP+':5000'
+        DRONE_URL = 'http://' + DRONE_IP+':5000'             #hämta från redis istället? 
             # 3. Send coords to the URL of available drone
+        send_request(DRONE_URL, coords)   #jag skrev detta, men funktionen send_requestfanns redan, har ej ändrat den (scrolla upp)
         message = 'Got address and sent request to the drone'
     return message
         # ======================================================================

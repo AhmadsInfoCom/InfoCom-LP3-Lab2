@@ -11,13 +11,13 @@ app.secret_key = 'dljsaklqk24e21cjn!Ew@@dsa5'
 
 #Give a unique ID for the drone
 #===================================================================
-myID = "drone1"    #stod bara typ "MY_DRONE" från början
+myID = "drone2"
 #===================================================================
 
 # Get initial longitude and latitude the drone
 #===================================================================
-current_longitude = 13.21008 #rätt? stod 0 från början. hämtade från lp2 lab1 build.py, det var våra initial OSM coordinates då, de hette longitude och latitude.
-current_latitude = 55.71106 #samma som ovan. 
+current_longitude = 0
+current_latitude = 0
 #===================================================================
 
 drone_info = {'id': myID,
@@ -28,7 +28,7 @@ drone_info = {'id': myID,
 
 # Fill in the IP address of server, and send the initial location of the drone to the SERVER
 #===================================================================
-SERVER= "http://10.0.0.23:5001/drone"                    #bytte IP till den vi sätter på serverdrönaren (satte till 23, så drönarna kan vara 24 och 25), och porten till den som database ska köra på enligt README-filen.    #Stod från början: "http://SERVER_IP:PORT/drone"
+SERVER="http://SERVER_IP:PORT/drone"
 with requests.Session() as session:
     resp = session.post(SERVER, json=drone_info)
 #===================================================================
@@ -38,8 +38,8 @@ def main():
     coords = request.json
     # Get current longitude and latitude of the drone 
     #===================================================================
-    current_longitude = #?? hämta från textfilen som ni gjorde i simulator. Från instruktionerna till simulator.py:
-    current_latitude = #?? "The simulator moves the drone and stops when the drone arrives at to_location. You can save the final coordinates of the drone to a text file, so that the drone knows where it is and can start from this location as current_location for the next delivery.
+    current_longitude = 0
+    current_latitude = 0
     #===================================================================
     from_coord = coords['from']
     to_coord = coords['to']
