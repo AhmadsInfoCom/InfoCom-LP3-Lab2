@@ -32,11 +32,7 @@ def drone():
     #Kanske:
     #Gör en if-sats, t.ex. if(droneID = drone1) så ska i = 1, och formattera strängen därefter, så drone{i}: t.ex. redis.server.set('drone{i}_status', drone_status),  för: ID, IP, status, longitude, latitude
     
-    redis server.set(drone[i][j]?, droneIP)
-    redis.server.set('drone1', droneID)                  #måste vara ngt annat man ska göra, känns konstigt att behöva göra detta? 
-    redis_server.set('drone1_status', drone_status)    
-    redis_server.set('drone1_longitude', drone_longitude)       
-    redis_server.set('drone1_latitude', drone_longitude)
+    redis_server.set(droneID, [droneIP, droneID, drone_status, drone_longitude, drone_latitude])
     
 
      # =======================================================================================
