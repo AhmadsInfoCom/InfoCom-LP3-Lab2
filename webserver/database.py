@@ -34,15 +34,17 @@ def drone():
     
     drone_list = [droneIP, drone_status, drone_longitude, drone_latitude]   #droneID isn't needed in the list, right? 
     
+    '''
     json_drone_list = json.dumps(drone_list)
     redis_server.set(droneID, json_drone_list)
     #json.loads(redis_server.get(droneID).decode())
-    
     '''
+    
     pickle_drone_list = pickle.dumps(drone_list)
     redis_server.set(droneID, pickle_drone_list)
     #pickle.loads(droneID, pickle_drone_list)
-    '''
+    
+
     #annars lpush, zadd, vad är det? 
     
 

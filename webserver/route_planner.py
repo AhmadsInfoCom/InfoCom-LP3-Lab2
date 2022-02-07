@@ -54,11 +54,12 @@ def route_planner():
         
         print(redis_server.get('drone1'))
         
-        print(json.loads(redis_server.get('drone1').decode()))
+        '''
+        print(json.loads(redis_server.get('drone1'))) #.decode()?
+        '''
         
-        '''
-        print(pickle.loads(redis_server.get('drone1').decode()))
-        '''
+        print(pickle.loads(redis_server.get('drone1'))) #.decode()?
+        
         
         '''
         if str(redis_server.get('drone1')[2]) && str(redis_server.get('drone2')[2]) == 'busy':
