@@ -19,6 +19,10 @@ app.secret_key = 'dljsaklqk24e21cjn!Ew@@dsa5'
 redis_server = redis.Redis(host='localhost', port=6379, decode_responses=True, charset="unicode_escape")    # Gissar på detta, vi kör ju det här skriptet på localhost (server pi). Stod från början: redis.Redis("REDIS_SERVER", decode_responses=True, charset="unicode_escape")
 # ===============================================
 
+#strict redis?
+#utf-8
+
+
 # Translate OSM coordinate (longitude, latitude) to SVG coordinates (x,y).
 # Input coords_osm is a tuple (longitude, latitude).
 def translate(coords_osm):
@@ -53,13 +57,14 @@ def get_drones():
     #              }
     # use function translate() to covert the coodirnates to svg coordinates
     #=============================================================================================================================================
-    '''
-    drone1array = json.loads(redis_server.get('drone1')) #.decode()
-    drone2array = json.loads(redis_server.get('drone2'))  #.decode()
+    
+    drone1array = json.loads(redis_server.get('drone1')) #.decode() borde inte behövas, vi har satt decode_respone=true
+    drone2array = json.loads(redis_server.get('drone2')) 
+    
     '''
     drone1array = pickle.loads(redis_server.get('drone1')) #.decode()
     drone2array = pickle.loads(redis_server.get('drone2'))  #.decode()
-    
+    '''
     
     print(drone1array)
     print(drone2array)

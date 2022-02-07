@@ -52,14 +52,14 @@ def route_planner():
         
         # if no drone is availble:
         
+        
         print(redis_server.get('drone1'))
         
-        '''
-        print(json.loads(redis_server.get('drone1'))) #.decode()?
-        '''
+        print(json.loads(redis_server.get('drone1'))) #json loads tar en sträng (och vi har satt decode_response=true däruppe så det borde returnera en sträng) och json.loads konverterar det till en lista (eller en dict?)
         
+        '''
         print(pickle.loads(redis_server.get('drone1'))) #.decode()?
-        
+        '''
         
         '''
         if str(redis_server.get('drone1')[2]) && str(redis_server.get('drone2')[2]) == 'busy':
