@@ -59,7 +59,7 @@ def get_drones():
     #=============================================================================================================================================
     
     drone1array = json.loads(redis_server.get('drone1')) #.decode() borde inte behövas, vi har satt decode_respone=true
-    drone2array = json.loads(redis_server.get('drone2')) 
+    drone2array = json.loads(redis_server.get('drone2')) #this returns NoneType???
     
     '''
     drone1array = pickle.loads(redis_server.get('drone1')) #.decode()

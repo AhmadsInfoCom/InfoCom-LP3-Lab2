@@ -7,7 +7,7 @@ import redis
 import json
 import requests
 
-from webserver.database import drone
+#from webserver.database import drone
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -88,3 +88,4 @@ def route_planner():
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port='5002')
+    
