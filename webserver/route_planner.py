@@ -52,31 +52,36 @@ def route_planner():
         
         # if no drone is availble:
         
-        
+        '''
         print(redis_server.get('drone1'))
+        '''
         
+        '''
         print(json.loads(redis_server.get('drone1'))) #json loads tar en sträng (och vi har satt decode_response=true däruppe så det borde returnera en sträng) och json.loads konverterar det till en lista (eller en dict?)
+        '''
         
         '''
         print(pickle.loads(redis_server.get('drone1'))) #.decode()?
         '''
         
-        '''
-        if str(redis_server.get('drone1')[2]) && str(redis_server.get('drone2')[2]) == 'busy':
+        drone1 = json.loads(redis_server.get('drone1'))
+        drone2 = json.loads(redis_server.get('drone2'))
+        
+        if drone1[1] && drone2[1] == 'busy':
             message = 'No available drone, try later'
         
         # else:
             # 2. Get the IP of available drone, 
         else:
-            if str(redis_server.get('drone1')[2]) == 'idle':
-                DRONE_URL = str(redis_server.get('drone1')[0])
-            elif str(redis_server.get('drone2')[2]) == 'idle':
-                DRONE_URL = str(redis_server.get('drone2')[0])
+            if drone1[1] == 'idle':
+                DRONE_URL = drone1[0]
+            elif drone2[1] == 'idle':
+                DRONE_URL = drone2[0]
         #DRONE_URL = 'http://' + DRONE_IP+':5000'             #stod så här förut
             # 3. Send coords to the URL of available drone
             send_request(DRONE_URL, coords)   #jag skrev detta, men funktionen send_requestfanns redan, har ej ändrat den (scrolla upp)
             message = 'Got address and sent request to the drone'
-        '''
+        
     return message
         # ======================================================================
 
