@@ -32,7 +32,18 @@ def drone():
     #Kanske:
     #Gör en if-sats, t.ex. if(droneID = drone1) så ska i = 1, och formattera strängen därefter, så drone{i}: t.ex. redis.server.set('drone{i}_status', drone_status),  för: ID, IP, status, longitude, latitude
     
-    redis_server.set(droneID, [droneIP, droneID, drone_status, drone_longitude, drone_latitude])
+    drone_list = [droneIP, drone_status, drone_longitude, drone_latitude]   #droneID isn't needed in the list, right? 
+    
+    json_drone_list = json.dumps(drone_list)
+    redis_server.set(droneID, json_drone_list)
+    #json.loads(redis_server.get(droneID).decode())
+    
+    '''
+    pickle_drone_list = pickle.dumps(drone_list)
+    redis_server.set(droneID, pickle_drone_list)
+    #pickle.loads(droneID, pickle_drone_list)
+    '''
+    #annars lpush, zadd, vad är det? 
     
 
      # =======================================================================================
