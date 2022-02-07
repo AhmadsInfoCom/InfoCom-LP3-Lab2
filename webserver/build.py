@@ -8,7 +8,7 @@ import redis
 import pickle
 import json
 
-from webserver.database import drone
+#from webserver.database import drone
 
 app = Flask(__name__)
 CORS(app)
