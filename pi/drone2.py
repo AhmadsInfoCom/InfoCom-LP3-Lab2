@@ -11,7 +11,7 @@ app.secret_key = 'dljsaklqk24e21cjn!Ew@@dsa5'
 
 #Give a unique ID for the drone
 #===================================================================
-myID = "drone1"    #stod bara typ "MY_DRONE" från början
+myID = "drone2"    #stod bara typ "MY_DRONE" från början
 #===================================================================
 
 # Get initial longitude and latitude the drone
@@ -38,7 +38,7 @@ def main():
     coords = request.json
     # Get current longitude and latitude of the drone 
     #===================================================================
-    dronedest = open('dronedestination.txt', 'r')
+    dronedest = open('dronedestination2.txt', 'r')
     linelist = dronedest.readlines()
     current_longitude = float(linelist[0]) #?? hämta från textfilen som ni gjorde i simulator. Från instruktionerna till simulator.py:
     current_latitude = float(linelist[1]) #?? "The simulator moves the drone and stops when the drone arrives at to_location. You can save the final coordinates of the drone to a text file, so that the drone knows where it is and can start from this location as current_location for the next delivery.
