@@ -53,8 +53,8 @@ def get_drones():
     #              }
     # use function translate() to covert the coodirnates to svg coordinates
     #=============================================================================================================================================
-    drone1array = redis.get('drone1')
-    drone2array = redis.get('drone2')
+    drone1array = json.loads(redis_server.get('drone1').decode())
+    drone2array = json.loads(redis_server.get('drone2').decode())
     print(drone1array)
     print(drone2array)
     drone_dict = {'DRONE_1':{'longitude': translate(drone1array[3]), 'latitude': translate(drone1array[4]), 'status': drone1array[2]},                     #Stod bara såhär {} förut.
