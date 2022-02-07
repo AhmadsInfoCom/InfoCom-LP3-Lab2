@@ -38,7 +38,7 @@ def main():
     coords = request.json
     # Get current longitude and latitude of the drone 
     #===================================================================
-    dronedest = open('dronedestination.txt')
+    dronedest = open('dronedestination.txt', 'r')
     linelist = dronedest.readlines()
     current_longitude = float(linelist[0]) #?? hämta från textfilen som ni gjorde i simulator. Från instruktionerna till simulator.py:
     current_latitude = float(linelist[1]) #?? "The simulator moves the drone and stops when the drone arrives at to_location. You can save the final coordinates of the drone to a text file, so that the drone knows where it is and can start from this location as current_location for the next delivery.
