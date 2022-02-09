@@ -58,19 +58,19 @@ def get_drones():
     # use function translate() to covert the coodirnates to svg coordinates
     #=============================================================================================================================================
     
-    drone1array = json.loads(redis_server.get('drone1')) #.decode() borde inte behövas, vi har satt decode_respone=true
-    drone2array = json.loads(redis_server.get('drone2')) #this returns NoneType???
+    drone_dict = dict()
+    for key in redis_server.scan_iter():
+        drone_array = json.loads(redis_server.get(key)) #.decode() borde inte behövas, vi har satt decode_respone=true
+        long = translate(drone_array[2])
+        lat = translate(drone_array[3])
+        drone = {key: {'longitude': long, 'latitude': lat, 'status': drone1array[1]}}
+        drone_dict.update(drone) 
     
     '''
     drone1array = pickle.loads(redis_server.get('drone1')) #.decode()
     drone2array = pickle.loads(redis_server.get('drone2'))  #.decode()
     '''
-    
-    print(drone1array)
-    print(drone2array)
-    drone_dict = {'DRONE_1':{'longitude': translate(drone1array[2]), 'latitude': translate(drone1array[3]), 'status': drone1array[1]},                     #Stod bara såhär {} förut.
-                  'DRONE_2': {'longitude': translate(drone2array[2]), 'latitude': translate(drone2array[3]), 'status': drone2array[1]}                       #fyll i rätt grejer, hämta från redis när ni skrivit klart route planner
-                  }                                                                                                                      
+                                                                                                                       
     return jsonify(drone_dict)
 
 if __name__ == "__main__":
