@@ -62,7 +62,7 @@ def get_drones():
     for key in redis_server.scan_iter():
         drone_array = json.loads(redis_server.get(key)) #.decode() borde inte behövas, vi har satt decode_respone=true
         print(json.loads(redis_server.get(key)))
-        long, lat = translate(drone_array[2], drone_array[3])
+        long, lat = translate((drone_array[2], drone_array[3]))
         drone = {key: {'longitude': long, 'latitude': lat, 'status': drone1array[1]}}
         drone_dict.update(drone) 
     
