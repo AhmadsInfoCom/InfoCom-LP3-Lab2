@@ -28,7 +28,9 @@ drone_info = {'id': myID,
 
 # Fill in the IP address of server, and send the initial location of the drone to the SERVER
 #===================================================================
-SERVER= "http://100.100.100.24:5001/drone"                    #bytte IP till den vi sätter på serverdrönaren (satte till 23, så drönarna kan vara 24 och 25), och porten till den som database ska köra på enligt README-filen.    #Stod från början: "http://SERVER_IP:PORT/drone"
+SERVER= "http://100.100.100.24:5001/drone"
+print(SERVER)
+#bytte IP till den vi sätter på serverdrönaren (satte till 23, så drönarna kan vara 24 och 25), och porten till den som database ska köra på enligt README-filen.    #Stod från början: "http://SERVER_IP:PORT/drone"
 with requests.Session() as session:
     resp = session.post(SERVER, json=drone_info)
 #===================================================================
