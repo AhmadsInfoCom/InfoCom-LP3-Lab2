@@ -32,7 +32,7 @@ def drone():
     #Kanske:
     #Gör en if-sats, t.ex. if(droneID = drone1) så ska i = 1, och formattera strängen därefter, så drone{i}: t.ex. redis.server.set('drone{i}_status', drone_status),  för: ID, IP, status, longitude, latitude
     
-    if(droneID == drone1):
+    if(droneID == "drone1"):
         drone1_list = [droneIP, drone_status, drone_longitude, drone_latitude]   #droneID isn't needed in the list, right? 
     else:
         drone2_list = [droneIP, drone_status, drone_longitude, drone_latitude]   #droneID isn't needed in the list, right? 
