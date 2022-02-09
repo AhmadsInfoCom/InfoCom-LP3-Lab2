@@ -57,6 +57,12 @@ def route_planner():
             if drone_array[1] == 'idle':
                 DRONE_URL = 'http://' + drone_array[0]
                 print(DRONE_URL)
+                print(DRONE_URL)
+                print(DRONE_URL)
+                print(DRONE_URL)
+                print(DRONE_URL)
+                print(DRONE_URL)
+                print(DRONE_URL)
                 available_drone = True
                 send_request(DRONE_URL, coords)   #jag skrev detta, men funktionen send_requestfanns redan, har ej ändrat den (scrolla upp)
                 message = 'Got address and sent request to the drone'
