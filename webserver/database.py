@@ -35,7 +35,7 @@ def drone():
     if(droneID == "drone1"):
         drone1_list = [droneIP, drone_status, drone_longitude, drone_latitude]   #droneID isn't needed in the list, right?
         json_drone1_list = json.dumps(drone1_list)          #konverterar listan till en sträng: https://pythonexamples.org/python-list-to-json/
-         redis_server.set(droneID, json_drone1_list)        #lägger in strängen i redis_server
+        redis_server.set(droneID, json_drone1_list)        #lägger in strängen i redis_server
     else:
         drone2_list = [droneIP, drone_status, drone_longitude, drone_latitude]   #droneID isn't needed in the list, right?
         json_drone2_list = json.dumps(drone2_list)
