@@ -55,7 +55,7 @@ def route_planner():
         for key in redis_server.scan_iter():
             drone_array = json.loads(redis_server.get(key)) #.decode() borde inte behövas, vi har satt decode_respone=true
             if drone_array[1] == 'idle':
-                DRONE_URL = drone_array[0]
+                DRONE_URL = http:// + drone_array[0]
                 available_drone = True
                 send_request(DRONE_URL, coords)   #jag skrev detta, men funktionen send_requestfanns redan, har ej ändrat den (scrolla upp)
                 message = 'Got address and sent request to the drone'
