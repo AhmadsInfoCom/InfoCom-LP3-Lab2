@@ -59,7 +59,7 @@ def route_planner():
                 print(DRONE_URL)
                 print(DRONE_URL)
                 print(DRONE_URL)
-                print(DRONE_URL)
+                print('hejhejehjehejehejejehej')
                 print(DRONE_URL)
                 print(DRONE_URL)
                 print(DRONE_URL)
