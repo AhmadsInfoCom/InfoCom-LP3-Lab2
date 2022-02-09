@@ -55,7 +55,7 @@ def route_planner():
         drone1 = json.loads(redis_server.get('drone1')) #json loads tar en sträng (och vi har satt decode_response=true däruppe så det borde returnera en sträng) och json.loads konverterar det till en lista (eller en dict?)
         drone2 = json.loads(redis_server.get('drone2'))
         
-        if drone1[1] && drone2[1] == 'busy':
+        if drone1[1] and drone2[1] == 'busy':
             message = 'No available drone, try later'
         
         # else:
