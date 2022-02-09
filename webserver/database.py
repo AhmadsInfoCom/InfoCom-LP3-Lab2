@@ -41,12 +41,7 @@ def drone():
         json_drone2_list = json.dumps(drone2_list)
         redis_server.set(droneID, json_drone2_list)        #lägger in strängen i redis_server
     
-
-    
     #json.loads(redis_server.get(droneID))   
-    
-    print(json.loads(redis_server.get('drone1')))
-    print(json.loads(redis_server.get('drone2')))
     
     '''
     pickle_drone_list = pickle.dumps(drone_list)
