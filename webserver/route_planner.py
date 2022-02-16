@@ -60,8 +60,10 @@ def route_planner():
                 available_drone = True
                 send_request(DRONE_URL, coords)   #jag skrev detta, men funktionen send_requestfanns redan, har ej ändrat den (scrolla upp)
                 message = 'Got address and sent request to the drone'
+                return message
         if not available_drone:
                 message = 'No available drone, try later'
+                return message
         
         # else:
             # 2. Get the IP of available drone, 
@@ -69,7 +71,7 @@ def route_planner():
         #DRONE_URL = 'http://' + DRONE_IP+':5000'             #stod så här förut
             # 3. Send coords to the URL of available drone
             
-    return message
+    
         # ======================================================================
 
 
