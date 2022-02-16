@@ -19,7 +19,7 @@ myID = "drone2"    #stod bara typ "MY_DRONE" från början
 current_longitude = 13.21008 #rätt? stod 0 från början. hämtade från lp2 lab1 build.py, det var våra initial OSM coordinates då, de hette longitude och latitude.
 current_latitude = 55.71106 #samma som ovan.
 dronedest = open("dronedestination.txt", "w+")    #.txt?
-dronedest.writelines(current_longitude, current_latitude)   #sparar värdena första gången
+dronedest.writelines([current_longitude, current_latitude])   #sparar värdena första gången
 #===================================================================
 
 drone_info = {'id': myID,
