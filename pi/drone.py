@@ -21,7 +21,8 @@ size = os.path.getsize("dronedestination.txt")
 print(size)
 if size > 0:
     dronedest = open("dronedestination.txt", "r")    #.txt?
-    linelist = dronedest.readlines()
+    #linelist = dronedest.readlines()
+    linelist = dronedest.read().split(';')
     current_longitude = float(linelist[0])
     current_latitude = float(linelist[1])
     dronedest.close()
@@ -60,7 +61,8 @@ def main():
     # Get current longitude and latitude of the drone 
     #===================================================================
     dronedest = open('dronedestination.txt', 'r')
-    linelist = dronedest.readlines()
+    #linelist = dronedest.readlines()
+    linelist = dronedest.read().split(';')
     current_longitude = float(linelist[0]) #?? hämta från textfilen som ni gjorde i simulator. Från instruktionerna till simulator.py:
     current_latitude = float(linelist[1]) #?? "The simulator moves the drone and stops when the drone arrives at to_location. You can save the final coordinates of the drone to a text file, so that the drone knows where it is and can start from this location as current_location for the next delivery.
     dronedest.close()
