@@ -30,7 +30,7 @@ else:
     current_longitude = 13.21008 #rätt? stod 0 från början. hämtade från lp2 lab1 build.py, det var våra initial OSM coordinates då, de hette longitude och latitude.
     current_latitude = 55.71106 #samma som ovan.
     print(current_longitude)
-    dronedest = open("dronedestination.txt", "w+")    #.txt? 
+    dronedest = open("dronedestination2.txt", "w+")    #.txt? 
     dronedest.writelines([str(current_longitude), ';', str(current_latitude)])   #sparar värdena första gången
     dronedest.close()
 
@@ -78,3 +78,4 @@ def main():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
+
