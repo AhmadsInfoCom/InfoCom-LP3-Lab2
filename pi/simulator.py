@@ -57,7 +57,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--clong", help='current longitude of drone location' ,type=float)
     parser.add_argument("--clat", help='current latitude of drone location',type=float)
-w    parser.add_argument("--flong", help='longitude of input [from address]',type=float)
+    parser.add_argument("--flong", help='longitude of input [from address]',type=float)
     parser.add_argument("--flat", help='latitude of input [from address]' ,type=float)
     parser.add_argument("--tlong", help ='longitude of input [to address]' ,type=float)
     parser.add_argument("--tlat", help ='latitude of input [to address]' ,type=float)
