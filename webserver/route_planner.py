@@ -52,6 +52,7 @@ def route_planner():
         
         # if no drone is availble:
         
+        available_drone = False
         for key in redis_server.scan_iter():
             drone_array = json.loads(redis_server.get(key)) #.decode() borde inte behövas, vi har satt decode_respone=true
             if drone_array[1] == 'idle':
@@ -60,8 +61,7 @@ def route_planner():
                 send_request(DRONE_URL, coords)   #jag skrev detta, men funktionen send_requestfanns redan, har ej ändrat den (scrolla upp)
                 message = 'Got address and sent request to the drone'
         if not available_drone:
-            message = 'No available drone, try later'
-        available_drone = False
+                message = 'No available drone, try later'
         
         # else:
             # 2. Get the IP of available drone, 
