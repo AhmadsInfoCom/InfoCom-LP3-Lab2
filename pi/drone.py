@@ -21,13 +21,15 @@ current_longitude = 13.21008 #rätt? stod 0 från början. hämtade från lp2 la
 current_latitude = 55.71106 #samma som ovan.
 size = os.path.getsize("dronedestination.txt")
 if size > 0:
-    dronedest = open("dronedestination.txt", "w+")    #.txt? 
+    dronedest = open("dronedestination.txt", "w+")    #.txt?
     linelist = dronedest.readlines()
     current_longitude = float(linelist[0])
     current_latitude = float(linelist[1])
+    dronedest.close()
 else:
     dronedest = open("dronedestination.txt", "w+")    #.txt? 
     dronedest.writelines([str(current_longitude), str(current_latitude)])   #sparar värdena första gången
+    dronedest.close()
 #===================================================================
 
 drone_info = {'id': myID,
@@ -54,6 +56,7 @@ def main():
     linelist = dronedest.readlines()
     current_longitude = float(linelist[0]) #?? hämta från textfilen som ni gjorde i simulator. Från instruktionerna till simulator.py:
     current_latitude = float(linelist[1]) #?? "The simulator moves the drone and stops when the drone arrives at to_location. You can save the final coordinates of the drone to a text file, so that the drone knows where it is and can start from this location as current_location for the next delivery.
+    dronedest.close()
     #===================================================================
     from_coord = coords['from']
     to_coord = coords['to']
