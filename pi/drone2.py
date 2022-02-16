@@ -18,11 +18,11 @@ myID = "drone2"    #stod bara typ "MY_DRONE" från början
 # Get initial longitude and latitude the drone
 #===================================================================
 size = os.path.getsize("dronedestination2.txt")
+dronedest = open("dronedestination2.txt", "r")    #.txt?
 print(size)
 if size > 0:
-    dronedest = open("dronedestination2.txt", "r")    #.txt?
     #linelist = dronedest.readlines()
-    linelist = dronedest.read().split(';')
+    linelist = dronedest.read().split('\n')
     current_longitude = float(linelist[0])
     current_latitude = float(linelist[1])
     dronedest.close()
@@ -30,13 +30,12 @@ else:
     current_longitude = 13.21008 #rätt? stod 0 från början. hämtade från lp2 lab1 build.py, det var våra initial OSM coordinates då, de hette longitude och latitude.
     current_latitude = 55.71106 #samma som ovan.
     print(current_longitude)
-    dronedest = open("dronedestination2.txt", "w+")    #.txt? 
-    dronedest.writelines([str(current_longitude), ';', str(current_latitude)])   #sparar värdena första gången
+    dronedest.writelines([str(current_longitude), '\n', str(current_latitude)])   #sparar värdena första gången
     dronedest.close()
 
 dronedest = open("dronedestination2.txt", "r")    #.txt?
 #linelist = dronedest.readlines()
-linelist = dronedest.read().split(';')
+linelist = dronedest.read().split('\n')
 print(linelist)
 dronedest.close()
 #===================================================================
@@ -60,9 +59,9 @@ def main():
     coords = request.json
     # Get current longitude and latitude of the drone 
     #===================================================================
-    dronedest = open('dronedestination2.txt', 'r')
+    dronedest = open('dronedestination.txt', 'r')
     #linelist = dronedest.readlines()
-    linelist = dronedest.read().split(';')
+    linelist = dronedest.read().split('\n')
     current_longitude = float(linelist[0]) #?? hämta från textfilen som ni gjorde i simulator. Från instruktionerna till simulator.py:
     current_latitude = float(linelist[1]) #?? "The simulator moves the drone and stops when the drone arrives at to_location. You can save the final coordinates of the drone to a text file, so that the drone knows where it is and can start from this location as current_location for the next delivery.
     dronedest.close()
