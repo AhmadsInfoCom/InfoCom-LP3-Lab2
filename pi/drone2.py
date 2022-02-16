@@ -17,8 +17,6 @@ myID = "drone2"    #stod bara typ "MY_DRONE" från början
 
 # Get initial longitude and latitude the drone
 #===================================================================
-current_longitude = 13.21008 #rätt? stod 0 från början. hämtade från lp2 lab1 build.py, det var våra initial OSM coordinates då, de hette longitude och latitude.
-current_latitude = 55.71106 #samma som ovan.
 size = os.path.getsize("dronedestination2.txt")
 if size > 0:
     dronedest = open("dronedestination2.txt", "w+")    #.txt?
@@ -27,8 +25,10 @@ if size > 0:
     current_latitude = float(linelist[1])
     dronedest.close()
 else:
+    current_longitude = 13.21008 #rätt? stod 0 från början. hämtade från lp2 lab1 build.py, det var våra initial OSM coordinates då, de hette longitude och latitude.
+    current_latitude = 55.71106 #samma som ovan.
     dronedest = open("dronedestination2.txt", "w+")    #.txt? 
-    dronedest.writelines([str(current_longitude), str(current_latitude)])   #sparar värdena första gången
+    dronedest.writelines([str(current_longitude)+'\n', str(current_latitude)])   #sparar värdena första gången
     dronedest.close()
 #===================================================================
 
@@ -41,7 +41,6 @@ drone_info = {'id': myID,
 # Fill in the IP address of server, and send the initial location of the drone to the SERVER
 #===================================================================
 SERVER= "http://100.100.100.24:5001/drone"
-print(SERVER)
 #bytte IP till den vi sätter på serverdrönaren (satte till 23, så drönarna kan vara 24 och 25), och porten till den som database ska köra på enligt README-filen.    #Stod från början: "http://SERVER_IP:PORT/drone"
 with requests.Session() as session:
     resp = session.post(SERVER, json=drone_info)

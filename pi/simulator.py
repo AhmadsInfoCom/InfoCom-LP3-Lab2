@@ -57,7 +57,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--clong", help='current longitude of drone location' ,type=float)
     parser.add_argument("--clat", help='current latitude of drone location',type=float)
-    parser.add_argument("--flong", help='longitude of input [from address]',type=float)
+w    parser.add_argument("--flong", help='longitude of input [from address]',type=float)
     parser.add_argument("--flat", help='latitude of input [from address]' ,type=float)
     parser.add_argument("--tlong", help ='longitude of input [to address]' ,type=float)
     parser.add_argument("--tlat", help ='latitude of input [to address]' ,type=float)
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     print(current_coords, from_coords, to_coords)
     drone_long, drone_lat = run(args.id ,current_coords, from_coords, to_coords, SERVER_URL)
     dronedest = open("dronedestination.txt", "w+")    #.txt?
-    dronedest.writelines([str(drone_long), str(drone_lat)])   #värdena sparas i två rader
+    dronedest.writelines([str(drone_long)+'\n', str(drone_lat)])   #värdena sparas i två rader
     dronedest.close()
     # drone_long and drone_lat is the final location when drlivery is completed, find a way save the value, and use it for the initial coordinates of next delivery
     #=============================================================================
