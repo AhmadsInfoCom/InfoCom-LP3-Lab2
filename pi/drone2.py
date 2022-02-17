@@ -15,29 +15,38 @@ app.secret_key = 'dljsaklqk24e21cjn!Ew@@dsa5'
 myID = "drone2"    #stod bara typ "MY_DRONE" från början
 #===================================================================
 
+
 # Get initial longitude and latitude the drone
 #===================================================================
+
+
+# r+  börjar läsa/skriva från början. om du läser först så skriver du på i slutet.
+# a+ börjar läsa/skriva från slutet (så du kommer läsa en tom sträng hela tiden, även om du write och sen läser, så fattar inte poängen riktigt)
+# w+ raderar innehållet sen börjar läsa/skriva från slutet (så du kommer läsa en tom sträng hela tiden, även om du write och sen läser, så fattar inte poängen riktigt)
+# flowchart: https://stackoverflow.com/questions/21113919/difference-between-r-and-w-in-fopen#:~:text=%22w%2B%22%20Open%20a%20text%20file,if%20it%20does%20not%20exist.
+# mer detaljerat: https://mkyong.com/python/python-difference-between-r-w-and-a-in-open/
+# om att skriva i mitten av en fil: https://stackoverflow.com/questions/34467197/why-does-readline-put-the-file-pointer-at-the-end-of-the-file-in-python 
+
 size = os.path.getsize("dronedestination2.txt")
-dronedest = open("dronedestination2.txt", "r")    #.txt?
+dronedest = open("dronedestination2.txt", "r+")     #r+ allows append at start of file but if you read it once you will be at the end, a+ reads from beginning of file and appends to the end,    #stämmer inte att a+ läser från start, det funkar ju obv inte på denna rad https://stackoverflow.com/questions/13248020/whats-the-difference-between-r-and-a-when-open-file-in-python
 print(size)
-if size > 0:
-    #linelist = dronedest.readlines()
-    linelist = dronedest.read().split('\n')
+if size > 0:     #om drönaren redan hade en position sist då vi stängde programmet
+    linelist = dronedest.read().splitlines()                # readlines() kommer spara raderna med \n bakom, men read().splitline() gör så det sparas utan \n, https://stackoverflow.com/questions/15233340/getting-rid-of-n-when-using-readlines
     current_longitude = float(linelist[0])
     current_latitude = float(linelist[1])
-    dronedest.close()
-else:
+else:             #annars skriver vi in initial coordinates i filen
     current_longitude = 13.21008 #rätt? stod 0 från början. hämtade från lp2 lab1 build.py, det var våra initial OSM coordinates då, de hette longitude och latitude.
     current_latitude = 55.71106 #samma som ovan.
-    print(current_longitude)
-    dronedest.writelines([str(current_longitude), '\n', str(current_latitude)])   #sparar värdena första gången
-    dronedest.close()
+    dronedest.writelines([str(current_longitude),'\n', str(current_latitude)])     #https://stackoverflow.com/questions/13730107/writelines-writes-lines-without-newline-just-fills-the-file    #https://stackoverflow.com/questions/51980776/python-readline-with-custom-delimiter
+dronedest.close()
 
+'''
 dronedest = open("dronedestination2.txt", "r")    #.txt?
 #linelist = dronedest.readlines()
-linelist = dronedest.read().split('\n')
+linelist = dronedest.read().splitlines() 
 print(linelist)
 dronedest.close()
+'''
 #===================================================================
 
 drone_info = {'id': myID,
@@ -59,9 +68,9 @@ def main():
     coords = request.json
     # Get current longitude and latitude of the drone 
     #===================================================================
-    dronedest = open('dronedestination.txt', 'r')
+    dronedest = open('dronedestination2.txt', 'r')
     #linelist = dronedest.readlines()
-    linelist = dronedest.read().split('\n')
+    linelist = dronedest.read().splitlines()
     current_longitude = float(linelist[0]) #?? hämta från textfilen som ni gjorde i simulator. Från instruktionerna till simulator.py:
     current_latitude = float(linelist[1]) #?? "The simulator moves the drone and stops when the drone arrives at to_location. You can save the final coordinates of the drone to a text file, so that the drone knows where it is and can start from this location as current_location for the next delivery.
     dronedest.close()
@@ -77,4 +86,3 @@ def main():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
-

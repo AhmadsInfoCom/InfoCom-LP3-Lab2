@@ -70,8 +70,8 @@ if __name__ == "__main__":
 
     print(current_coords, from_coords, to_coords)
     drone_long, drone_lat = run(args.id ,current_coords, from_coords, to_coords, SERVER_URL)
-    dronedest = open("dronedestination.txt", "w+")    #.txt?
-    dronedest.writelines([str(drone_long)+'\n', str(drone_lat)])   #värdena sparas i två rader
+    dronedest = open("dronedestination.txt", "w+")    #w/w+ kommer skriva över filen, medan r+ inte gör det och hade börjat skriva på toppen, och a/a+ hade inte skrivit över samt skrivit i slutet   #https://mkyong.com/python/python-difference-between-r-w-and-a-in-open/
+    dronedest.writelines([str(drone_long), '\n', str(drone_lat)])   #värdena sparas i två rader
     dronedest.close()
     # drone_long and drone_lat is the final location when drlivery is completed, find a way save the value, and use it for the initial coordinates of next delivery
     #=============================================================================
