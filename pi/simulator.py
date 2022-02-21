@@ -27,7 +27,7 @@ def run(id, current_coords, from_coords, to_coords, SERVER_URL):
                           'longitude': drone_coords[0],
                           'latitude': drone_coords[1],
                           'status': 'busy'
-d                        }
+                        }
             resp = session.post(SERVER_URL, json=drone_info)
     d_long, d_la =  getMovement(drone_coords, to_coords)
     while ((to_coords[0] - drone_coords[0])**2 + (to_coords[1] - drone_coords[1])**2)*10**6 > 0.0002:
