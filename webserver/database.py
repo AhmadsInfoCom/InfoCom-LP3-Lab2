@@ -36,7 +36,8 @@ def drone():
     json_drone_list = json.dumps(drone_list)          #konverterar listan till en sträng: https://pythonexamples.org/python-list-to-json/
     redis_server.set(droneID, json_drone_list)        #lägger in strängen i redis_server
 
-'''
+
+    """
     if(droneID == "drone1"):
         drone1_list = [droneIP, drone_status, drone_longitude, drone_latitude]   #droneID isn't needed in the list, right?
         json_drone1_list = json.dumps(drone1_list)          #konverterar listan till en sträng: https://pythonexamples.org/python-list-to-json/
@@ -45,14 +46,14 @@ def drone():
         drone2_list = [droneIP, drone_status, drone_longitude, drone_latitude]   #droneID isn't needed in the list, right?
         json_drone2_list = json.dumps(drone2_list)
         redis_server.set(droneID, json_drone2_list)        #lägger in strängen i redis_server
-    '''
+    """
     #json.loads(redis_server.get(droneID))   
     
-    '''
+    """
     pickle_drone_list = pickle.dumps(drone_list)
     redis_server.set(droneID, pickle_drone_list)
     #pickle.loads(droneID, pickle_drone_list)
-    '''
+    """
 
     #annars lpush, zadd, vad är det? 
     
