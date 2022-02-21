@@ -27,8 +27,8 @@ myID = "drone2"    #stod bara typ "MY_DRONE" från början
 # mer detaljerat: https://mkyong.com/python/python-difference-between-r-w-and-a-in-open/
 # om att skriva i mitten av en fil: https://stackoverflow.com/questions/34467197/why-does-readline-put-the-file-pointer-at-the-end-of-the-file-in-python 
 
-size = os.path.getsize("dronedestination2.txt")
-dronedest = open("dronedestination2.txt", "r+")     #r+ allows append at start of file but if you read it once you will be at the end, a+ reads from beginning of file and appends to the end,    #stämmer inte att a+ läser från start, det funkar ju obv inte på denna rad https://stackoverflow.com/questions/13248020/whats-the-difference-between-r-and-a-when-open-file-in-python
+size = os.path.getsize("dronedestination.txt")
+dronedest = open("dronedestination.txt", "r+")     #r+ allows append at start of file but if you read it once you will be at the end, a+ reads from beginning of file and appends to the end,    #stämmer inte att a+ läser från start, det funkar ju obv inte på denna rad https://stackoverflow.com/questions/13248020/whats-the-difference-between-r-and-a-when-open-file-in-python
 print(size)
 if size > 0:     #om drönaren redan hade en position sist då vi stängde programmet
     linelist = dronedest.read().splitlines()                # readlines() kommer spara raderna med \n bakom, men read().splitline() gör så det sparas utan \n, https://stackoverflow.com/questions/15233340/getting-rid-of-n-when-using-readlines
@@ -41,7 +41,7 @@ else:             #annars skriver vi in initial coordinates i filen
 dronedest.close()
 
 '''
-dronedest = open("dronedestination2.txt", "r")    #.txt?
+dronedest = open("dronedestination.txt", "r")    #.txt?
 #linelist = dronedest.readlines()
 linelist = dronedest.read().splitlines() 
 print(linelist)
@@ -68,7 +68,7 @@ def main():
     coords = request.json
     # Get current longitude and latitude of the drone 
     #===================================================================
-    dronedest = open('dronedestination2.txt', 'r')
+    dronedest = open('dronedestination.txt', 'r')
     #linelist = dronedest.readlines()
     linelist = dronedest.read().splitlines()
     current_longitude = float(linelist[0]) #?? hämta från textfilen som ni gjorde i simulator. Från instruktionerna till simulator.py:

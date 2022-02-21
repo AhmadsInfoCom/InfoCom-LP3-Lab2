@@ -27,7 +27,7 @@ def run(id, current_coords, from_coords, to_coords, SERVER_URL):
                           'longitude': drone_coords[0],
                           'latitude': drone_coords[1],
                           'status': 'busy'
-                        }
+d                        }
             resp = session.post(SERVER_URL, json=drone_info)
     d_long, d_la =  getMovement(drone_coords, to_coords)
     while ((to_coords[0] - drone_coords[0])**2 + (to_coords[1] - drone_coords[1])**2)*10**6 > 0.0002:
@@ -67,7 +67,6 @@ if __name__ == "__main__":
     current_coords = (args.clong, args.clat)
     from_coords = (args.flong, args.flat)
     to_coords = (args.tlong, args.tlat)
-
     print(current_coords, from_coords, to_coords)
     drone_long, drone_lat = run(args.id ,current_coords, from_coords, to_coords, SERVER_URL)
     dronedest = open("dronedestination.txt", "w+")    #w/w+ kommer skriva över filen, medan r+ inte gör det och hade börjat skriva på toppen, och a/a+ hade inte skrivit över samt skrivit i slutet   #https://mkyong.com/python/python-difference-between-r-w-and-a-in-open/
